@@ -1,0 +1,3 @@
+[submodule "paper/raft-thesis-zh_cn"]
+	path = paper/raft-thesis-zh_cn
+	url = git@github.com:OneSizeFitsQuorum/raft-thesis-zh_cn.git
