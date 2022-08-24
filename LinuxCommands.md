@@ -111,3 +111,9 @@ sudo ln -s /usr/local/cmake/bin/cmake  cmake # 创建软链接，源文件到目
 > /usr/local/include
 >
 > /usr/lib/gcc/x86_64-linux-gnu/4.8/include
+
+```shell
+groupadd dbgroup# 创建新的组 dbgroup
+useradd -g dbgroup omm# 建立用户账号omm分配到组dbgroup
+```
+
