@@ -6,3 +6,4 @@
 
 cmake设置：.vscode.settting 中 添加 `"cmake.cmakePath": "/usr/local/cmake/bin/cmake"`
 
+回跳光标位置：ctrl+alt+-（Linux）
