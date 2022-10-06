@@ -70,7 +70,7 @@ ld是静态链接器，ld.so是动态链接器。
 pkg-config 会从 /usr/lib/pkgconfig/ 下面找该库的 .pc 文件
 或者从 PKG_CONFIG_PATH 环境变量中找该库的 .pc 文件路径
 
-#### 方式一：
+####       方式一：
 
 某个库在安装完成后，会在其安装目录下的 lib/ 下生成 .pc 文件。把这个文件复制到 **/usr/lib/pkgconfig/** 下。然后用 pkg-config --libs libxxx , 查看是否生效。
 
@@ -116,4 +116,24 @@ sudo ln -s /usr/local/cmake/bin/cmake  cmake # 创建软链接，源文件到目
 groupadd dbgroup# 创建新的组 dbgroup
 useradd -g dbgroup omm# 建立用户账号omm分配到组dbgroup
 ```
+
+## Linux权限
+
+Linux下权限的粒度有 拥有者u(user) 、群组ug(user group) 、其它组(o) 三种。每个文件都可以针对三个粒度，设置不同的rwx(读写执行)权限。一个文件只能归属于一个用户和组， 如果其它的用户想有这个文件的权限，则可以将该用户加入具备权限的群组，一个用户可以同时归属于多个组。对文件的权限类型包括读r、写w、执行x。 r=4，w=2，x=1 。
+
+```shell
+chmod a+r,ug+w,o-w a.conf b.xml # 设置文件 a.conf 与 b.xml 权限为拥有者与其所属同一个群组 可读写，其它组可读不可写
+ls -ld # 查看文件夹权限
+ls -l # 查看文件权限
+# 权限前的d表示文件夹，-表示普通文件，l表示链接文件
+```
+
+## Linux命令记录
+
+```shell
+echo 'abc' > test.txt # >覆盖原有内容
+echo '123' >> test.txt # >>追加原有内容
+```
+
+
 
