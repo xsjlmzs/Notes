@@ -33,6 +33,9 @@ docker run -dp 3000:3000 -v todo-db:/etc/todos getting-started
 docker run -it centos:7.6.1810 # 启动进程为/bin/bash
 # -i 保持容器输入为stdin
 # -t 分配一个伪tty
+
+docker commit <container-id> <image-name>:<version> # 将容器commit成镜像
+docker save -o object.tar <image-name>:<version> # 打包镜像
 ```
 
 ## 以非 root 用户身份管理 Docker 
@@ -49,4 +52,20 @@ Docker 守护进程绑定到 Unix 套接字而不是 TCP 端口。 默认情况�
 ## Dockerfile编写
 
 ![BaseCmd](./assets/DockerLearning/DockerBase.jpg)
+
+## Docker容器内使用宿主机代理
+
+[**docker 容器内使用宿主机的代理配置**](https://kebingzao.com/2019/02/22/docker-container-proxy/)
+
+[**Configure the Docker client**](https://docs.docker.com/network/proxy/#configure-the-docker-client)
+
+## Docker容器内设置产生core dump文件
+
+```shell
+ulimit -c unlimited # 设置core文件大小为unlimited
+# 修改/proc/sys/kernel/core_pattern文件为core.%e.%p
+# 原来是|/usr/share/apport/apport %p %s %c %P
+# 注意！需要在宿主机上切换到root用户修改
+# 主机和容器中不可能同时拥有不同的 core_pattern，因为 docker 与其主机共享内核。
+```
 

@@ -89,3 +89,38 @@ cmake -E # cmake支持的与平台无关的一些命令，如echo/copy等
 
 - [example](https://gist.github.com/baiwfg2/39881ba703e9c74e95366ed422641609) 
 - [reference](https://www.bookstack.cn/read/CMake-Cookbook/content-chapter5-5.4-chinese.md)
+
+## 使用FetchContent方法导入外部包
+
+```cmake
+FetchContent_Declare(
+  catch
+  GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+  GIT_TAG        v2.13.6
+)
+# 使用 FetchContent_Declare(MyName) 来从 URL、Git 仓库等地方获取数据或者是软件包。
+# CMake 3.14+
+FetchContent_MakeAvailable(catch)
+
+# CMake 3.11+
+FetchContent_GetProperties(catch)
+# 使用 FetchContent_GetProperties(MyName) 来获取 MyName_* 等变量的值，这里的 MyName 是上一步获取的软件包的名字。
+if(NOT catch_POPULATED)
+  FetchContent_Populate(catch)
+  add_subdirectory(${catch_SOURCE_DIR} ${catch_BINARY_DIR})
+ endif()
+# 检查 MyName_POPULATED 是否已经导出，否则使用 FetchContent_Populate(MyName) 来导出变量（如果这是一个软件包，则使用 add_subdirectory("${MyName_SOURCE_DIR}" "${MyName_BINARY_DIR}") ）
+```
+
+
+
+## 设置Debug模式
+
+```cmake
+SET(CMAKE_BUILD_TYPE "Debug")
+SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb")
+SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
+```
+
+
+

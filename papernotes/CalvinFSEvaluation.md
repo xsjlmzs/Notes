@@ -36,6 +36,17 @@ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 ./bin/scripts/cluster --command="kill" --ssh_key1="-i ~/id_rsa1.pem" --ssh_key2="-i ~/id_rsa2.pem" --ssh_key3="-i ~/id_rsa3.pem" --calvin_path=/root/CalvinFS
 ```
 
+```shell
+# CalvinDB
+# 运行实验
+./bin/scripts/cluster --command="start" --lowlatency=0 --type=0 --experiment=0  --percent_mp=0  --percent_mr=0  --hot_records=10000 --max_batch_size=100 --ssh_key1="-i ./id_rsa1.pem" --ssh_key2="-i ./id_rsa2.pem" --ssh_key3="-i ./id_rsa3.pem" --calvin_path=/root/CalvinDB
+
+# kill
+./bin/scripts/cluster --command="kill" --lowlatency=0  --type=1 --ssh_key1="-i ./id_rsa1.pem" --ssh_key2="-i ./id_rsa2.pem" --ssh_key3="-i ./id_rsa3.pem" --calvin_path=/root/CalvinDB
+```
+
+
+
 ## Notes
 
 ### Abstract

@@ -46,3 +46,4 @@ Answer：在Txn Node确定最终的写集后，将其缓存在本地。Execution
 
 子事务的CRDT合并不要求必须在同一个epoch号下，只要读保证一致性即可。
 
+​                                                                                                                                                                                                                 

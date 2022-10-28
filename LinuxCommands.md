@@ -133,6 +133,7 @@ ls -l # 查看文件权限
 ```shell
 echo 'abc' > test.txt # >覆盖原有内容
 echo '123' >> test.txt # >>追加原有内容
+curl cip.cc # 适合翻墙后查看网络ip信息
 ```
 
 
