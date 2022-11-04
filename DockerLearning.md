@@ -69,3 +69,20 @@ ulimit -c unlimited # 设置core文件大小为unlimited
 # 主机和容器中不可能同时拥有不同的 core_pattern，因为 docker 与其主机共享内核。
 ```
 
+## Docker网络模式
+
+```shell
+docker network list
+# NETWORK ID     NAME      DRIVER    SCOPE
+# 0f7a5c16c802   bridge    bridge    local
+# 94e9f9672d51   host      host      local
+# e6854655c2c4   none      null      local
+```
+
+**bridge **模式：Docker 的默认网络模式，Docker 启动时创建一个虚拟网桥， 此模式会为每一个容器分配、设置 IP 等，并将容器连接到一个 docker0 虚拟网桥，通过 docker0 网桥以及 Iptables DNAT 表配置与宿主机通信。每个容器拥有自己的 Network Namespace 。
+
+**host** 模式：容器和宿主机在同一个 Network Namespace 下。
+
+**container**模式：容器和另外一个容器共享 Network Namespace 。实现容器互联。
+
+**none** 模式：Docker 容器拥有自己的 Network Namespace，但是，并不为Docker 容器进行任何网络配置。

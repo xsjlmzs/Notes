@@ -18,7 +18,8 @@ git reset . # 取消add
 git stash # 暂时存储修改
 git stash list # 列出所有stash
 git stash pop <stash_id> # 恢复stash的修改 
-
+git push origin --delete <branchName> # 删除远程分支
+git branch --delete <branchName> # 删除本地分支
 ```
 
 `HEAD` 总是指向当前分支上最近一次提交记录。
