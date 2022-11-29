@@ -93,14 +93,18 @@ cmake -E # cmake支持的与平台无关的一些命令，如echo/copy等
 ## 使用FetchContent方法导入外部包
 
 ```cmake
+include(FetchContent) # 引入FetchContent.camke包 搜索路径为CMAKE_MODULE_PATH
+# 设置外部包的地址版本等信息
 FetchContent_Declare(
   catch
   GIT_REPOSITORY https://github.com/catchorg/Catch2.git
   GIT_TAG        v2.13.6
+  SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/ext/catch # 指定库下载地址
 )
 # 使用 FetchContent_Declare(MyName) 来从 URL、Git 仓库等地方获取数据或者是软件包。
 # CMake 3.14+
-FetchContent_MakeAvailable(catch)
+FetchContent_MakeAvailable(catch) # 获取外部包内容
+target_link_libraries(<project-name> catch)
 
 # CMake 3.11+
 FetchContent_GetProperties(catch)
@@ -110,9 +114,9 @@ if(NOT catch_POPULATED)
   add_subdirectory(${catch_SOURCE_DIR} ${catch_BINARY_DIR})
  endif()
 # 检查 MyName_POPULATED 是否已经导出，否则使用 FetchContent_Populate(MyName) 来导出变量（如果这是一个软件包，则使用 add_subdirectory("${MyName_SOURCE_DIR}" "${MyName_BINARY_DIR}") ）
+
+# 使用 FetchContent 模块下载的源码都在 build 下的 _deps 目录里
 ```
-
-
 
 ## 设置Debug模式
 

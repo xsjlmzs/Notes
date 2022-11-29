@@ -86,3 +86,8 @@ docker network list
 **container**模式：容器和另外一个容器共享 Network Namespace 。实现容器互联。
 
 **none** 模式：Docker 容器拥有自己的 Network Namespace，但是，并不为Docker 容器进行任何网络配置。
+
+```shell
+docker inspect <container-id> # 查看容器ip
+```
+
