@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True) # 设置CXX标准必须
 add_executable(codebase ./src/main.cc) # 从./src/main.cc生成可执行文件codebase
 ```
 
-**target_include_directories()**：指定**目标**包含的头文件路径。[官方文档](https://link.zhihu.com/?target=https%3A//cmake.org/cmake/help/v3.15/command/target_include_directories.html%3Fhighlight%3Dtarget_include_directories)
+**target_include_directories()**：指定**目标**包含的头文件路径。[官方文档](https://cmake.org/cmake/help/v3.15/command/target_include_directories.html?highlight=target_include_directories)
 
 **target_link_libraries()**：指定**目标**链接的库。[官方文档](https://link.zhihu.com/?target=https%3A//cmake.org/cmake/help/v3.15/command/target_link_libraries.html%3Fhighlight%3Dtarget_link_libraries)
 
@@ -126,5 +126,12 @@ SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb")
 SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
 ```
 
+## CMake 配置 Protobuf 
 
+```cmake
+protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS foo.proto)
+# 根据 foo.proto 生成头文件和源文件到相应的 build-tree 目录
+# 要求 protobuf_generate_cpp 命令和生成 add_executable() 或 add_library() 的命令必须在同一个CMakeList中
+
+```
 

@@ -28,8 +28,6 @@ git branch --delete <branchName> # 删除本地分支
 git clone -b dev xxx # clone指定分支dev到本地
 ```
 
-
-
 ## Git Setting
 
 ```shell
