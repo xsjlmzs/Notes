@@ -22,7 +22,7 @@ Cornus 需要的唯一额外功能是存储层中的原子比较和交换功能�
 
 问题1：延迟。传统 2PC 一次经历一个 rtt 和两次 log 。
 
-问题2：阻塞。协调者在写日之前挂掉了，当前事务的状态便不确定，这会阻塞之后的一部分事务。
+问题2：阻塞。协调者在写日志之前挂掉了，当前事务的状态便不确定，这会阻塞之后的一部分事务。
 
 现有的在 share-nothing 中的做法：1、消除准备阶段（需要额外的系统假设）2、消除阻塞（额外的第三阶段）
 
@@ -40,7 +40,7 @@ Disaggregated Storage 对比 share-nothing 有如下feature：
 
 2、可以被所有参与者访问
 
-3、可以支持小的计算任务
+3、除了提供读写以外，可以支持一定的计算任务
 
 在 Disaggregated Storage 如何降低延迟？
 
@@ -48,7 +48,7 @@ Disaggregated Storage 对比 share-nothing 有如下feature：
 
 ![fig3](../assets/Cornus/Cornus-fig3.png)
 
-在 Disaggregated Storage 如何降低延迟？
+在 Disaggregated Storage 如何避免阻塞？
 
 因为集体的投票被写入 Storage ，每个参与者可以阅读所有参与者的投票了解结果。这里假设每个数据分区保存一个日志。
 

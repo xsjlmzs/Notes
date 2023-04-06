@@ -46,6 +46,10 @@ NAM 在逻辑上分离了计算节点和存储节点。使用 RDMA 在所有节�
 
 ![Listing1:Treansaction Execution in a Compute Server](../assets/NAM-DB/NAM-DB-list1.png)
 
+执行流程伪代码如 Listing 1。
+
+![Figure2:Naive RDMA-based SI-Protocol](../assets/NAM-DB/NAM-DB-fig2.png)
+
 ### 3.2 Open Problems and Challenges
 
 全局时间戳仍然是单点瓶颈。
