@@ -36,6 +36,9 @@ docker run -it centos:7.6.1810 # 启动进程为/bin/bash
 
 docker commit <container-id> <image-name>:<version> # 将容器commit成镜像
 docker save -o object.tar <image-name>:<version> # 打包镜像
+
+# Dockerfile 跳过安装交互(如cmake选择地区交互)
+ARG DEBIAN_FRONTEND=noninteractive
 ```
 
 ## 以非 root 用户身份管理 Docker 
@@ -58,6 +61,8 @@ Docker 守护进程绑定到 Unix 套接字而不是 TCP 端口。 默认情况�
 [**docker 容器内使用宿主机的代理配置**](https://kebingzao.com/2019/02/22/docker-container-proxy/)
 
 [**Configure the Docker client**](https://docs.docker.com/network/proxy/#configure-the-docker-client)
+
+[**docker 设置代理**](https://neucrack.com/p/286)
 
 ## Docker容器内设置产生core dump文件
 
