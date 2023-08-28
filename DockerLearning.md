@@ -70,6 +70,7 @@ Docker 守护进程绑定到 Unix 套接字而不是 TCP 端口。 默认情况�
 ulimit -c unlimited # 设置core文件大小为unlimited
 # 修改/proc/sys/kernel/core_pattern文件为core.%e.%p
 # 原来是|/usr/share/apport/apport %p %s %c %P
+# |/usr/share/apport/apport -p%p -s%s -c%c -d%d -P%P -u%u -g%g -- %E
 # 注意！需要在宿主机上切换到root用户修改
 # 主机和容器中不可能同时拥有不同的 core_pattern，因为 docker 与其主机共享内核。
 ```
